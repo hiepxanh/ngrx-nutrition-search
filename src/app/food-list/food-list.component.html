@@ -1,0 +1,24 @@
+<div fxLayout="column">
+<div class="subheader">
+    <span style="font-weight:500">My Food List</span>
+  </div>
+
+<mat-list *ngIf="(foodList | async).length; else notfound">
+  <mat-list-item *ngFor="let food of foodList | async; let i = index;" [routerLink]="['/myfoods', i]">
+    <div>
+    <span mat-line style="font-weight:500">{{food.name}}</span>
+    <span mat-line> Energy: {{food.nutrients[1].gm}} kJ
+    </span>
+    </div>
+    <div style="margin-left:auto" mat-ripple>
+     <mat-icon style="color: grey" (click)="removeFood(food)">delete</mat-icon>
+    </div>
+  </mat-list-item>
+</mat-list>
+<ng-template #notfound>
+<div  fxLayout="column" fxLayoutAlign="start center">
+  <span class="search-info">Search some food e.g. Yogurt, egg...</span>
+  <mat-icon class="search-icon">search</mat-icon>
+</div>
+</ng-template>
+</div>

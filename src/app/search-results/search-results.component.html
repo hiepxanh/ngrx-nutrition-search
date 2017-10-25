@@ -1,0 +1,13 @@
+<div fxLayout="column" fxLayoutAlign="center">
+  <div class="subheader">
+    <span style="font-weight:500">Results</span>
+  </div>
+  <mat-progress-bar *ngIf="loading | async" mode="indeterminate"></mat-progress-bar>
+  <div class="search-results">
+    <mat-list>
+      <mat-list-item class="search-result-item" *ngFor="let result of results | async" [routerLink]="['/search', result.id]">
+        <span class="search-result-item-name">{{result.name}}</span>
+      </mat-list-item>
+    </mat-list>
+  </div>
+</div>
